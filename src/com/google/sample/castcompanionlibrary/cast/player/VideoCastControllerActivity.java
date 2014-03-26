@@ -66,6 +66,7 @@ public class VideoCastControllerActivity extends ActionBarActivity implements IV
     private static final String TAG = LogUtils.makeLogTag(VideoCastControllerActivity.class);
     private VideoCastManager mCastManager;
     private View mPageView;
+    private ImageView mBackgroundImage;
     private ImageView mPlayPause;
     private TextView mLiveText;
     private TextView mStart;
@@ -180,6 +181,7 @@ public class VideoCastControllerActivity extends ActionBarActivity implements IV
         mPlayDrawable = getResources().getDrawable(R.drawable.ic_av_play_dark);
         mStopDrawable = getResources().getDrawable(R.drawable.ic_av_stop_dark);
         mPageView = findViewById(R.id.pageView);
+        mBackgroundImage = (ImageView)findViewById(R.id.backgroundImage);
         mPlayPause = (ImageView) findViewById(R.id.imageView1);
         mLiveText = (TextView) findViewById(R.id.liveText);
         mStart = (TextView) findViewById(R.id.startText);
@@ -332,7 +334,8 @@ public class VideoCastControllerActivity extends ActionBarActivity implements IV
     @Override
     public void setImage(Bitmap bitmap) {
         if (null != bitmap) {
-            mPageView.setBackgroundDrawable(new BitmapDrawable(getResources(), bitmap));
+            mPageView.setBackgroundDrawable(null);
+            mBackgroundImage.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
     }
 
