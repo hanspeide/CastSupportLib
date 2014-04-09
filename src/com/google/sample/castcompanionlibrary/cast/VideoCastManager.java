@@ -771,10 +771,12 @@ public class VideoCastManager extends BaseCastManager
     @Override
     protected void onUiVisibilityChanged(boolean visible) {
         if (isFeatureEnabled(FEATURE_NOTIFICATION)) {
-            Intent intent = new Intent(VideoCastNotificationService.ACTION_VISIBILITY);
-            intent.setPackage(mContext.getPackageName());
-            intent.putExtra("visible", !visible);
-            mContext.startService(intent);
+            if (mContext != null){
+                Intent intent = new Intent(VideoCastNotificationService.ACTION_VISIBILITY);
+                intent.setPackage(mContext.getPackageName());
+                intent.putExtra("visible", !visible);
+                mContext.startService(intent);
+            }
         }
         super.onUiVisibilityChanged(visible);
     }
