@@ -20,6 +20,7 @@ import static com.google.sample.castcompanionlibrary.utils.LogUtils.LOGD;
 import static com.google.sample.castcompanionlibrary.utils.LogUtils.LOGE;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -84,6 +85,7 @@ public class VideoCastControllerActivity extends ActionBarActivity implements IV
     private OnVideoCastControllerListener mListener;
     private int mStreamType;
     public static final float DEFAULT_VOLUME_INCREMENT = 0.05f;
+    private Intent parentActivityIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -341,14 +343,16 @@ public class VideoCastControllerActivity extends ActionBarActivity implements IV
 
     @Override
     public void setLine1(String text) {
-        mLine1.setText(text);
-
+        if (mLine1 != null){
+            mLine1.setText(text);
+        }
     }
 
     @Override
     public void setLine2(String text) {
-        mLine2.setText(text);
-
+        if (mLine2 != null){
+            mLine2.setText(text);
+        }
     }
 
     @Override
@@ -374,6 +378,20 @@ public class VideoCastControllerActivity extends ActionBarActivity implements IV
     @Override
     public void closeActivity() {
         finish();
+    }
+
+    @Override
+    public Intent getSupportParentActivityIntent(){
+        if (parentActivityIntent != null){
+            return parentActivityIntent;
+        }
+
+        return null;
+    }
+
+
+    public void setParentActivityIntent(Intent parentActivityIntent){
+        this.parentActivityIntent = parentActivityIntent;
     }
 
 }

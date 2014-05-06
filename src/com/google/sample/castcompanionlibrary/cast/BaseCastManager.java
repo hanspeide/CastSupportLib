@@ -264,7 +264,7 @@ public abstract class BaseCastManager implements DeviceSelectionListener, Connec
             }
             mSessionId = null;
         } else if (null == mApiClient) {
-            LOGD(TAG, "acquiring a conenction to Google Play services for " + mSelectedCastDevice);
+            LOGD(TAG, "Acquiring a connection to Google Play Services for " + mSelectedCastDevice);
             Cast.CastOptions.Builder apiOptionsBuilder = getCastOptionBuilder(mSelectedCastDevice);
             mApiClient = new GoogleApiClient.Builder(mContext)
                     .addApi(Cast.API, apiOptionsBuilder.build())

@@ -259,9 +259,11 @@ public class VideoCastControllerFragment extends Fragment implements OnVideoCast
                     if (mPlaybackState == MediaStatus.PLAYER_STATE_BUFFERING) {
                         return;
                     }
-                    if (mCastManager != null && !mCastManager.isConnected()) {
+
+                    if (mCastManager == null || (mCastManager != null && !mCastManager.isConnected())){
                         return;
                     }
+
                     try {
                         int duration = (int) mCastManager.getMediaDuration();
                         if (duration > 0) {
